@@ -1,4 +1,7 @@
 import express from 'express';
+
+import { IndexRouter } from './controllers/index.router';
+
 import bodyParser from 'body-parser';
 import {filterImageFromURL, deleteLocalFiles} from './util/util';
 
@@ -12,6 +15,8 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   
   // Use the body parser middleware for post requests
   app.use(bodyParser.json());
+
+  app.use('/api/v0/', IndexRouter)
 
   // @TODO1 IMPLEMENT A RESTFUL ENDPOINT
   // GET /filteredimage?image_url={{URL}}
